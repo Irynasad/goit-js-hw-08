@@ -19,7 +19,7 @@ function getSaveTime() {
 }
 
 function load() {
-  create = getSaveTime();
+  const create = getSaveTime();
   // console.log(create);
   player.setCurrentTime(create || 0);
 }
