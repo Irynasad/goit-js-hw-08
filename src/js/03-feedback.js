@@ -26,19 +26,19 @@ function onFormInput(event) {
   console.log(refs.form.elements);
 
   // formData[event.target.name] = event.target.value;
-  localStorage.setItem(LOCAL_KEY, JSON.stringify(formData.email));
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(formData));
 }
 
 function getSaveInputs() {
   JSON.parse(localStorage.getItem(LOCAL_KEY));
 }
 
-function populateFormInput(form) {
+function populateFormInput() {
   const formData = getSaveInputs(LOCAL_KEY);
   if (!formData) {
     return;
   }
   for (const key in formData) {
-    form.elements[key].value = formData[key];
+    refs.form.elements[key].value = formData[key];
   }
 }
