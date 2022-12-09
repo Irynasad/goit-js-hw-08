@@ -21,5 +21,5 @@ function getSaveTime() {
 function load() {
   const create = getSaveTime();
   // console.log(create);
-  player.setCurrentTime(create || 0);
+  player.setCurrentTime(create || 0.1);
 }
