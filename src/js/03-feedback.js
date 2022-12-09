@@ -6,6 +6,8 @@ const refs = {
   form: document.querySelector('.feedback-form'),
 };
 
+populateFormInput();
+
 refs.form.addEventListener('input', onFormInput);
 refs.form.addEventListener('submit', throttle(onFormSubmit, 500));
 
@@ -14,28 +16,22 @@ populateFormInput();
 function onFormSubmit(event) {
   event.preventDefault();
   event.currentTarget.reset();
-  console.log('Отправляем форму', formData);
+  console.log(formData);
   localStorage.removeItem(LOCAL_KEY);
 }
 function onFormInput(event) {
-  //   const formData = {
-  //     email: refs.form.elements.email.value,
-  //     message: refs.form.elements.message.value,
-  //   };
-  //   console.log(formData);
-  //   console.log(refs.form.elements);
-
   formData[event.target.name] = event.target.value;
   localStorage.setItem(LOCAL_KEY, JSON.stringify(formData));
 }
 
 function getSaveInputs(key) {
-  JSON.parse(localStorage.getItem(key));
+  return JSON.parse(localStorage.getItem(key));
 }
 
 function populateFormInput() {
   const formData = getSaveInputs(LOCAL_KEY);
   if (!formData) {
+    // console.log('нет данніх в хранилище');
     return;
   }
   for (const key in formData) {
