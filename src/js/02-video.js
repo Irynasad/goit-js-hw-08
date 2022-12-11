@@ -15,11 +15,11 @@ function onPlay({ seconds }) {
 }
 
 function getSaveTime() {
-  return JSON.parse(localStorage.getItem(PLAYER_KEY)) || [];
+  return JSON.parse(localStorage.getItem(PLAYER_KEY)) || 0;
 }
 
 function load() {
   const create = getSaveTime();
   // console.log(create);
-  player.setCurrentTime(create || 0.1);
+  player.setCurrentTime(create);
 }
